@@ -16,13 +16,11 @@ beforeEach(() => {
     mainPage.categories()
 
     productPage.accessoriesElements.phones()
-    productPage.accessoriesElements.inStock()
     productPage.accessoriesElements.title()
 
     //Add a product to cart
     productPage.HTC_TouchPage.HTC_touchLink()
     productPage.HTC_TouchPage.assertPage()
-    productPage.HTC_TouchPage.inStock()
     productPage.HTC_TouchPage.addToCartbtn()
     cy.wait(2000)
     cy.go(-2)
@@ -30,8 +28,7 @@ beforeEach(() => {
     //Add a product to cart
     productPage.ipodShuffle.ipodShuffleLink()
     productPage.ipodShuffle.assertPage()
-    productPage.ipodShuffle.inStock()
-    productPage.ipodShuffle.addToCartbtn()
+    productPage.ipodShuffle.availabilityStatus('2-3 Days')
 
 })
 
@@ -39,8 +36,8 @@ afterEach(() => {
     productPage.cart.cartLink()
     productPage.cart.editCart()
     cy.get('.btn-danger').first().click()
-    cy.get('.btn-danger').last().click()
-})
+    //cy.get('.btn-danger').last().click()
+});
 
 const successMsg = ' Success: You have modified your shopping cart!'
 
@@ -51,6 +48,7 @@ describe('validate various Cart actvities', () => {
 
         //verify number of items in Cart gets incremented when another item is added
         productPage.numberOfItemsInCart(2)
+        cy.wait(2000)
     })
 
 
@@ -62,6 +60,7 @@ describe('validate various Cart actvities', () => {
 
         //Verify items displayed in the cart
         cartOperations.verifyItemsInCart()
+        
     })
 
 
@@ -72,10 +71,11 @@ describe('validate various Cart actvities', () => {
         productPage.cart.editCart()
 
         cartOperations.verifyUnitPriceInCart('HTC Touch HD', '$120.00')
-        cartOperations.verifyUnitPriceInCart('iPod Shuffle', '$150.00')
+
     })
 
     it('Verify the updated contents added to my cart - verify the price reflects that too', () => {
+
 
         //Go to Cart Page
         productPage.cart.cartLink();

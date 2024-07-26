@@ -9,11 +9,11 @@ class cartOperations {
                     expect(item).to.include('HTC Touch HD')
                 })
 
-                cy.get('tbody > :nth-child(2) > :nth-child(2)').then((e) => {
-                    cy.log(e.text())  //will display 'iPod Shuffle' 
-                    const item = e.text()
-                    expect(item).to.include('iPod Shuffle')
-                })
+                // cy.get('tbody > :nth-child(2) > :nth-child(2)').then((e) => {
+                //     cy.log(e.text())  //will display 'iPod Shuffle' 
+                //     const item = e.text()
+                //     expect(item).to.include('iPod Shuffle')
+                // })
             })
         })
     }

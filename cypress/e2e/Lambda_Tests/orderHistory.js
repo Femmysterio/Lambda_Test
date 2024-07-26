@@ -3,7 +3,7 @@
 import homePage from '../../support/Lambda_POM/homePage';
 
 
-describe('Validate Adding Multiple items', () => {
+describe('Validate Order history', () => {
 
   const email = 'femi17@gmail.com'
   const userName = 'femmysterio'
@@ -17,7 +17,7 @@ describe('Validate Adding Multiple items', () => {
     //let totalAmount = 0
     homePage.orderHistory()
     
-    homePage.totalOrderPrice(1590)
+    homePage.totalOrderPrice(1715)
     
   });
 

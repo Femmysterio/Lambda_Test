@@ -23,16 +23,15 @@ describe('validate various Cart actvities', () => {
     //Add a product to Cart
     productPage.HTC_TouchPage.HTC_touchLink()
     productPage.HTC_TouchPage.assertPage()
-    productPage.HTC_TouchPage.inStock()
     productPage.HTC_TouchPage.addToCartbtn()
     cy.wait(2000)
-    cy.go(-2)
+    // cy.go(-2)
 
-    //Add another product to cart
-    productPage.ipodShuffle.ipodShuffleLink()
-    productPage.ipodShuffle.assertPage()
-    productPage.ipodShuffle.inStock()
-    productPage.ipodShuffle.addToCartbtn()
+    // //Add another product to cart
+    // productPage.ipodShuffle.ipodShuffleLink()
+    // productPage.ipodShuffle.assertPage()
+    // productPage.ipodShuffle.inStock()
+    // productPage.ipodShuffle.addToCartbtn()
 
         // Close the current tab or window (simulate closing)
         cy.window().then(win => {

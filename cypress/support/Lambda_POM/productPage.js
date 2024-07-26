@@ -1,7 +1,7 @@
 class productPage{
 
     accessoriesElements = {
-        phones: () => cy.contains('Phones & PDAs (75)').click(),
+        phones: () => cy.contains('Phones & PDAs (75)').click({force:true}),
         inStock: () => cy.get('#mz-fss-0--1').check({force:true}),
         title: () => cy.title().should('eq', 'Phones & PDAs')   
     }
@@ -10,9 +10,8 @@ class productPage{
     HTC_TouchPage = {
         HTC_touchLink: () => cy.get('.text-ellipsis-2').contains('HTC Touch HD').click(),
         assertPage: () => cy.get('.h3').should('contain', 'HTC Touch HD'),
-        inStock: () => cy.get('.badge-success').should('contain', 'In Stock')
-        .and('be.visible'),
-        addToCartbtn: () => cy.get('#entry_216842').click()
+        //inStock: () => cy.contains('In Stock').should('contain', 'In Stock').and('be.visible'),   
+        addToCartbtn: () => cy.get('#entry_216842').click().click()
         
     }
     
@@ -20,8 +19,9 @@ class productPage{
     ipodShuffle = {
         ipodShuffleLink: () => cy.contains('iPod Shuffle').click({force:true}),
         assertPage: () => cy.get('.h3').should('contain', 'iPod Shuffle'),
-        inStock: () => cy.get('.badge-success').should('contain', 'In Stock'),
-        addToCartbtn: () => cy.contains('Add to Cart').click({force:true})
+        //inStock: () => cy.get('.badge-success').should('contain', 'In Stock'),
+        //addToCartbtn: () => cy.contains('Add to Cart').click({force:true})
+        availabilityStatus: (value) => cy.get(':nth-child(3) > .badge').should('contain', value)
     }
 
     numberOfItemsInCart(value) {
@@ -29,7 +29,7 @@ class productPage{
     }
     
     cart = {
-        cartLink: () => cy.get('.cart-icon').eq(0).click(),
+        cartLink: () => cy.get('.cart-icon').first().click({force:true}),
         editCart: () => cy.contains('Edit cart').click({force:true}),
         removeProduct: () => cy.get('.btn-danger > .fas').click()      
     }

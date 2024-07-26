@@ -8,7 +8,7 @@ class mainPage {
 
     categories() {
         cy.get('.title').eq(2).should('contain', ' Phone, Tablets & Ipod')
-        cy.get('.title').eq(2).click()
+        cy.get('.title').eq(2).click({force:true})
     }
 
     search = {
